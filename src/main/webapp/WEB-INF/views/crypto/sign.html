@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Crypto</title>
+</head>
+<body>
+
+Welcome to Certification Center Page!
+<p th:text="${'Certificate Center Public Key: ' + pub}">VALUE</p>
+<p th:text="${'Your ID: ' + sign.id}"></p>
+<p th:text="${'Your Certificate for Public Key: ' + cert}"></p>
+
+<form th:method="POST" th:action="@{/crypto}" th:object="${sign}">
+    <label for="id">Enter ID: </label>
+    <textarea name="id" th:field="*{id}" rows="1" cols="45"></textarea>
+    <div style="color:red" th:if="${#fields.hasErrors('id')}" th:errors="*{id}">ID Error</div>
+    <br/>
+    <label for="publicKey">Enter Public Key: </label>
+    <textarea name="publicKey" th:field="*{publicKey}" rows="10" cols="45"></textarea>
+    <div style="color:red" th:if="${#fields.hasErrors('publicKey')}" th:errors="*{publicKey}">Public Key Error</div>
+    <br/>
+    <input type="submit" value="Sign"/>
+</form>
+</body>
+</html>

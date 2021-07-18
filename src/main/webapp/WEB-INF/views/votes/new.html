@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>New person</title>
+</head>
+<body>
+
+<form th:method="POST" th:action="@{/votes}" th:object="${vote}">
+  <label for="bulletin">Enter Bulletin: </label>
+  <textarea name="bulletin" th:field="*{bulletin}" rows="10" cols="45"></textarea>
+  <div style="color:red" th:if="${#fields.hasErrors('bulletin')}" th:errors="*{bulletin}">Name Error</div>
+  <br/>
+  <label for="bulletinSign">Enter Bulletin Sign: </label>
+  <textarea name="bulletinSign" th:field="*{bulletinSign}" rows="10" cols="45"></textarea>
+  <div style="color:red" th:if="${#fields.hasErrors('bulletinSign')}" th:errors="*{bulletinSign}">Name Error</div>
+  <br/>
+  <label for="publicKey">Enter Public Key: </label>
+  <textarea name="publicKey" th:field="*{publicKey}" rows="10" cols="45"></textarea>
+  <div style="color:red" th:if="${#fields.hasErrors('publicKey')}" th:errors="*{publicKey}">Name Error</div>
+  <br/>
+  <label for="certificate">Enter certificate: </label>
+  <textarea name="certificate" th:field="*{certificate}" rows="10" cols="45"></textarea>
+  <div style="color:red" th:if="${#fields.hasErrors('certificate')}" th:errors="*{certificate}">Age Error</div>
+  <br/>
+  <input type="submit" value="Create"/>
+</form>
+
+<br />
+
+<a th:href="@{/votes}">BACK</a>
+
+</body>
+</html>

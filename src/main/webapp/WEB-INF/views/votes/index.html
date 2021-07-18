@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+</head>
+<body>
+Candidate : Certificate
+<div th:each="vote : ${votes}">
+  <a th:href="@{/votes/{id}(id=${vote.getId()})}"
+     th:text="${vote.getBulletin() + ' : ' + vote.getCertificate().substring(0, 10)}">user</a>
+</div>
+
+<br/>
+<hr/>
+
+<a href="/votes/new">Make vote</a>
+
+</body>
+</html>

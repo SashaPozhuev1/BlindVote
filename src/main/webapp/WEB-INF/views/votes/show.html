@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Show</title>
+</head>
+<body>
+<p th:text="${'Candidate: ' + vote.getBulletin()}">VALUE</p>
+<p th:text="${'Certificate: ' + vote.getCertificate()}">VALUE</p>
+<p th:text="${'Bulletin ID: ' + vote.getId()}">VALUE</p>
+
+<br />
+
+<a th:href="@{/votes}">BACK</a>
+<!--<a th:href="@{/votes/{id}/edit(id=${vote.getId()})}">Edit</a>-->
+
+<!--<form th:method="DELETE" th:action="@{/votes/{id}(id=${vote.getId()})}">-->
+<!--    <input type="submit" value="Delete"/>-->
+<!--</form>-->
+</body>
+</html>

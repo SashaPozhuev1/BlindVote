@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Client</title>
+</head>
+<body>
+Welcome to Client Page!
+
+<p th:text="${'Your Bulletin Sign: ' + client.bulletinSign}"></p>
+<p th:text="${'Your Masked Public Key Certificate: ' + client.bulletinSign}"></p>
+<p th:text="${'Your params for Delete Mask from Public Key Certificate: '}"></p>
+
+<form th:method="POST" th:action="@{/client}" th:object="${client}">
+  <label for="privateKey">Enter Private Key: </label>
+  <textarea name="privateKey" th:field="*{privateKey}" rows="10" cols="45"></textarea>
+  <div style="color:red" th:if="${#fields.hasErrors('privateKey')}" th:errors="*{privateKey}">Private Key Error</div>
+  <br/>
+  <label for="publicKey">Enter Public Key: </label>
+  <textarea name="publicKey" th:field="*{publicKey}" rows="10" cols="45"></textarea>
+  <div style="color:red" th:if="${#fields.hasErrors('publicKey')}" th:errors="*{publicKey}">Public Key Error</div>
+  <br/>
+  <label for="bulletin">Enter bulletin: </label>
+  <textarea name="bulletin" th:field="*{bulletin}" rows="10" cols="45"></textarea>
+  <div style="color:red" th:if="${#fields.hasErrors('bulletin')}" th:errors="*{bulletin}">Bulletin Error</div>
+  <br/>
+  <input type="submit" value="Submit"/>
+</form>
+
+<br />
+
+<a href="/crypto/mask">Delete Mask from Public Key Certificate</a>
+</body>
+</html>
